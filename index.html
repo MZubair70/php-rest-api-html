@@ -228,8 +228,8 @@
                 message(data.message, data.status);
 
                 if (data.status == true) {
+                  $("#modal").hide();
                   loadTable();
-                  $("#addForm").trigger("reset");
                 }
               },
             });
