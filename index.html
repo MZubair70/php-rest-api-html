@@ -186,6 +186,28 @@
         });
 
         //Delete Record
+        $(document).on("click", ".delete-btn", function () {
+          if (confirm("Do you really want to delete this record?")) {
+            var studentID = $(this).data("id");
+            var obj = { sid: studentID };
+            var myJSON = JSON.stringify(obj);
+
+            var row = this;
+
+            $.ajax({
+              url: "http://localhost/php-rest-api-html/api-delete.php",
+              type: "POST",
+              data: myJSON,
+              success: function (data) {
+                message(data.message, data.status);
+
+                if (data.status == true) {
+                  $(row).closest("tr").fadeOut();
+                }
+              },
+            });
+          }
+        });
 
         //Fetch Single Record : Show in Modal Box
         $(document).on("click", ".edit-btn", function () {
