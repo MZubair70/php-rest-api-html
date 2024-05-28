@@ -146,6 +146,10 @@
         //Insert New Record
         $("#save-button").on("click", function (e) {
           e.preventDefault();
+
+          var jsonObj = jsonData("#addForm");
+
+          console.log(jsonObj);
         });
 
         //Delete Record
