@@ -127,11 +127,10 @@
 
         loadTable();
 
-        //Insert New Record
-        $("#save-button").on("click", function (e) {
-          e.preventDefault();
+        //Function for form Data to JSON Object
 
-          var arr = $("#addForm").serializeArray();
+        function jsonData(targetForm) {
+          var arr = $(targetForm).serializeArray();
 
           var obj = {};
 
@@ -139,12 +138,16 @@
             obj[arr[a].name] = arr[a].value;
           }
 
-          console.log(obj);
-
           var json_string = JSON.stringify(obj);
 
-          console.log(json_string);
+          return json_string;
+        }
+
+        //Insert New Record
+        $("#save-button").on("click", function (e) {
+          e.preventDefault();
         });
+
         //Delete Record
 
         //Fetch Single Record : Show in Modal Box
