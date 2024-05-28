@@ -127,8 +127,24 @@
 
         loadTable();
 
-        //Function for form Data to JSON Object
+        //Show Success or Error Message
+        function message(message, status) {
+          if (status == true) {
+            $("#success-message").html(message).slideDown();
+            $("#error-message").slideUp();
+            setTimeout(function () {
+              $("#success-message").slideUp();
+            }, 4000);
+          } else if (status == false) {
+            $("#error-message").html(message).slideDown();
+            $("#success-message").slideUp();
+            setTimeout(function () {
+              $("#error-message").slideUp();
+            }, 4000);
+          }
+        }
 
+        //Function for form Data to JSON Object
         function jsonData(targetForm) {
           var arr = $(targetForm).serializeArray();
 
@@ -148,6 +164,11 @@
           e.preventDefault();
 
           var jsonObj = jsonData("#addForm");
+
+          if (jsonObj == false) {
+            message("All Fields are required.", false);
+          } else {
+          }
         });
 
         //Delete Record
