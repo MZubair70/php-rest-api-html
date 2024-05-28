@@ -212,6 +212,29 @@
         });
 
         //Update Record
+        $("#edit-button").on("click", function (e) {
+          e.preventDefault();
+
+          var jsonObj = jsonData("#edit-form");
+
+          if (jsonObj == false) {
+            message("All Fields are required.", false);
+          } else {
+            $.ajax({
+              url: "http://localhost/php-rest-api-html/api-update.php",
+              type: "POST",
+              data: jsonObj,
+              success: function (data) {
+                message(data.message, data.status);
+
+                if (data.status == true) {
+                  loadTable();
+                  $("#addForm").trigger("reset");
+                }
+              },
+            });
+          }
+        });
 
         //Live Search Record
       });
