@@ -85,6 +85,7 @@
       $(document).ready(function () {
         //Fetch All Records
         function loadTable() {
+          $("#load-table").html("");
           $.ajax({
             url: "http://localhost/php-rest-api-html/api-fetch-all.php",
             type: "GET",
