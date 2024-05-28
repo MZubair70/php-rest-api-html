@@ -128,7 +128,7 @@
         loadTable();
 
         //Insert New Record
-        $("save-button").on("click", function (e) {
+        $("#save-button").on("click", function (e) {
           e.preventDefault();
 
           var arr = $("#addForm").serializeArray();
@@ -138,6 +138,8 @@
           for (var a = 0; a < arr.length; a++) {
             obj[arr[a].name] = arr[a].value;
           }
+
+          console.log(obj);
         });
         //Delete Record
 
